@@ -1,0 +1,11 @@
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:55000/tx_everything
+    username: postgres
+    password: postgrespw
+
+  liquibase:
+    change-log: classpath:liquibase-main.yml
+    enabled: true

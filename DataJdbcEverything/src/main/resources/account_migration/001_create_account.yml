@@ -1,0 +1,18 @@
+databaseChangeLog:
+- logicalFilePath: account_migration/001_create_account.yml
+- changeSet:
+    id: 1
+    author: vdruzhinin
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+                primaryKey: true
+            name: id
+            type: BIGINT
+        - column:
+            name: amount
+            type: currency
+        tableName: account
