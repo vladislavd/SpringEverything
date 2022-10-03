@@ -5,6 +5,8 @@ import com.example.datajdbceverything.domain.model.Account;
 import com.example.datajdbceverything.exception.AccountManagerException;
 import com.example.datajdbceverything.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +20,7 @@ public class AccountManager {
     public static final String ACCOUNT_S_HAS_NOT_ENOUGH_MONEY = "Account %s has not enough money.";
     private final AccountRepository accountRepository;
 
+    @Retryable(backoff = @Backoff(delay = 100, maxDelay = 500, multiplier = 0.6, random = true), maxAttempts = 20)
     @Transactional
     public void makeTransfer(TransferDto transfer) {
         final Account accountTo = accountRepository.findById(transfer.accountTo())

@@ -9,3 +9,12 @@ spring:
   liquibase:
     change-log: classpath:liquibase-main.yml
     enabled: true
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    root: info
+    com.example.datajpaeverything:
+          manager:
+            AccountManager: debug

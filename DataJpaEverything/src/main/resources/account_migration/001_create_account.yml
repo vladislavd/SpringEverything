@@ -14,5 +14,8 @@ databaseChangeLog:
             type: BIGINT
         - column:
             name: amount
-            type: currency
+            type: CURRENCY
+        - column:
+              name: version
+              type: INT
         tableName: account

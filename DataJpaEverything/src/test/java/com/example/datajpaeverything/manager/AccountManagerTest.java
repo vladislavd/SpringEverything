@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 @SpringBootTest
 class AccountManagerTest {
@@ -30,15 +30,29 @@ class AccountManagerTest {
         System.out.println("savedTo = " + savedTo);
         System.out.println("savedFrom = " + savedFrom);
 
+        List<Future<?>> futures = new ArrayList<>();
+
         for (int i = 0; i < 10; i++) {
-            executorService.submit(
-                    createTransferTask(
-                            savedFrom.getId(),
-                            savedTo.getId(),
-                            BigDecimal.ONE)
-            );
+            futures.add(executorService.submit(() -> accountManager.makeTransfer(
+                            createTransferDto(savedFrom.getId(),
+                                    savedTo.getId(),
+                                    BigDecimal.ONE)
+                    )
+            ));
         }
-        executorService.awaitTermination(5, TimeUnit.SECONDS);
+        executorService.awaitTermination(3, TimeUnit.SECONDS);
+
+        futures.forEach(f -> {
+            try {
+                System.out.println("f.get() = " + f.get());
+            } catch (InterruptedException e) {
+                System.out.println("e.getMessage() = " + e.getMessage());
+                System.out.println("e.getCause().getMessage() = " + e.getCause().getMessage());
+            } catch (ExecutionException e) {
+                System.out.println("e.getCause().getMessage() = " + e.getCause().getMessage());
+                System.out.println("e.getMessage() = " + e.getMessage());
+            }
+        });
 
         Account resultFrom = accountRepository.findById(savedFrom.getId()).get();
         Account resultTo = accountRepository.findById(savedTo.getId()).get();
@@ -47,17 +61,6 @@ class AccountManagerTest {
 
         Assertions.assertEquals(BigDecimal.ZERO, resultFrom.getAmount());
         Assertions.assertEquals(BigDecimal.valueOf(20L), resultTo.getAmount());
-    }
-
-    private Runnable createTransferTask(Long fromId, long toId, BigDecimal amount) {
-        return () -> accountManager
-                .makeTransfer(
-                createTransferDto(
-                        fromId,
-                        toId,
-                        amount)
-        );
-
     }
 
     private TransferDto createTransferDto(long from, long to, BigDecimal amount) {

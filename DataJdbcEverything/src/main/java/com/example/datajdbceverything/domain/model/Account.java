@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
@@ -17,4 +18,6 @@ public class Account {
     @Id
     private Long id;
     private BigDecimal amount;
+    @Version
+    private Integer version;
 }
