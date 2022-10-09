@@ -15,6 +15,9 @@
   <modules>
     <module>DataJdbcEverything</module>
     <module>DataJpaEverything</module>
+    <module>ChainOfResponsibility</module>
+    <module>KafkaEverything</module>
+    <module>StrategyExample</module>
   </modules>
   <packaging>pom</packaging>
 
