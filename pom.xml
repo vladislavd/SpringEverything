@@ -19,6 +19,8 @@
     <module>KafkaEverything</module>
     <module>StrategyExample</module>
     <module>MongoExample</module>
+      <module>DepInversion</module>
+      <module>TempCheckModule</module>
   </modules>
   <packaging>pom</packaging>
 
