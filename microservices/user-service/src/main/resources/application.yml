@@ -1,0 +1,16 @@
+server:
+  port: 9001
+logging:
+  file:
+    path: /tmp/user-service/logs
+  level:
+    org: INFO
+spring:
+  application:
+    name: user-service
+eureka:
+  client:
+    enabled: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka

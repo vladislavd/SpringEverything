@@ -1,47 +1,49 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.3</version>
-    <relativePath/>
-  </parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.3</version>
+        <relativePath/>
+    </parent>
 
-  <groupId>org.example</groupId>
-  <artifactId>SpringEverything</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <modules>
-    <module>DataJdbcEverything</module>
-    <module>DataJpaEverything</module>
-    <module>ChainOfResponsibility</module>
-    <module>KafkaEverything</module>
-    <module>StrategyExample</module>
-    <module>MongoExample</module>
-      <module>DepInversion</module>
-      <module>TempCheckModule</module>
-  </modules>
-  <packaging>pom</packaging>
+    <groupId>org.example</groupId>
+    <artifactId>SpringEverything</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>DataJdbcEverything</module>
+        <module>DataJpaEverything</module>
+        <module>ChainOfResponsibility</module>
+        <module>KafkaEverything</module>
+        <module>StrategyExample</module>
+        <module>MongoExample</module>
+        <module>DepInversion</module>
+        <module>TempCheckModule</module>
+        <module>microservices/eureka-service</module>
+        <module>microservices/user-service</module>
+    </modules>
+    <packaging>pom</packaging>
 
-  <name>SpringEverything</name>
-  <url>http://maven.apache.org</url>
+    <name>SpringEverything</name>
+    <url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
