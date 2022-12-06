@@ -23,6 +23,7 @@
         <module>TempCheckModule</module>
         <module>microservices/eureka-service</module>
         <module>microservices/user-service</module>
+        <module>microservices/goods-service</module>
     </modules>
     <packaging>pom</packaging>
 

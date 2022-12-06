@@ -1,10 +1,12 @@
+
 server:
   port: 9001
 logging:
-  file:
-    path: /tmp/user-service/logs
+#  file:
+#    path: /tmp/user-service/logs
   level:
-    org: INFO
+    org: DEBUG
+#    org.springframework.context: DEBUG
 spring:
   application:
     name: user-service
@@ -14,3 +16,4 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+debug: true
